@@ -17,15 +17,16 @@ function fetchGitHubInformation() {
     ).then(
         function(response) {
             var userData = response;
-            $("gh-user-data").html(userInformationHTML(userData));
+            $("#gh-user-data").html(userInformationHTML(userData));
         }, function(errorRespone) {
             if (errorRespone.status === 404) {
-                $("gh-user-data").html(
+                $("#gh-user-data").html(
                     `<h2>No info found for user ${username}</h2>`
                 )
             } else {
-                console.log(errorRespone);
-                $("gh-user-data").html(`<h2>Error: ${errorResponse.responseJSON.message </h2>`);
-                }
-            });
+                console.log(errorResponse);
+                $("#gh-user-data").html(
+                    `<h2>Error: ${errorResponse.responseJSON.message}</h2>`);
+            }
+        });
 }
